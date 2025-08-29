@@ -19,6 +19,12 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_TOKEN }}
 
+    - name: install dependencies
+      run: yarn install
+
+    - name: build project
+      run: yarn build
+
     - name: build docker image
       run: docker buildx build --platform linux/amd64 -t km136/my-tg-bot:latest .
 
