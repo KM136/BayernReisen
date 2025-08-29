@@ -26,7 +26,8 @@ jobs:
       run: docker push km136/my-tg-bot:latest
 
     - name: deploy to render
-      uses: render-actions/render-action@v1
-      with:
-        apiToken: ${{ secrets.RENDER_API_TOKEN }}
-        serviceName: BayernReisen
+      run: |
+        curl -X PATCH "https://api.render.com/v1/services/srv-d2ng3g3e5dus7380gbig" \
+        -H "Authorization: Bearer ${{ secrets.RENDER_API_TOKEN }}" \
+        -H "Content-Type: application/json" \
+        -d '{"dockerImage":"docker.io/km136/my-tg-bot:latest"}'
