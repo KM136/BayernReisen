@@ -20,7 +20,7 @@ jobs:
         password: ${{ secrets.DOCKER_TOKEN }}
 
     - name: build docker image
-      run: docker buildx build --platform linux/amd64 -t km136/my-tg-bot:latest
+      run: docker buildx build --platform linux/amd64 -t km136/my-tg-bot:latest .
 
     - name: push docker image
       run: docker push km136/my-tg-bot:latest
