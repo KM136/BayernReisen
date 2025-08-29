@@ -25,8 +25,8 @@ jobs:
     - name: push docker image
       run: docker push km136/my-tg-bot:latest
 
-    - name: deploy to railway
-      uses: railwayapp/railway-action@v2
+    - name: deploy to render
+      uses: render-actions/render-action@v1
       with:
-        apiToken: ${{ secrets.RAILWAY_TOKEN }}
+        apiToken: ${{ secrets.RENDER_API_TOKEN }}
         serviceName: BayernReisen
